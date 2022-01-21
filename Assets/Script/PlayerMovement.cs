@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float movespeed;
     bool left = true;
     bool FirstTap = true;
+    public float downward;
     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,13 @@ public class PlayerMovement : MonoBehaviour
             Restart();
         }
 
+        if(rb.position.y<0.56f)
+        {
+                rb.AddForce(0, downward, 0);       
+         }
     }
+    
+
     void move()
     {
         transform.position += transform.forward * movespeed * Time.deltaTime;
@@ -65,7 +72,9 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene("Game");
 
     }
+
     
-
-
+    
 }
+
+
